@@ -8,14 +8,19 @@ function handleInput() {
     return;
   }
 
-  let command = userInput.split(' ')[0];
-  let value = userInput.split(' ')[1];
+  let [command, value] = userInput.split(' ');
 
   if (command === 'add') {
     myArray.push(value);
     console.log("Массив после добавления элемента:", myArray);
   } else if (command === 'del') {
-    let index = myArray.indexOf(value);
+    let index = -1;
+    for (let i = 0; i < myArray.length; i++) {
+      if (myArray[i] === value) {
+        index = i;
+        break;
+      }
+    }
     if (index !== -1) {
       myArray.splice(index, 1);
     }
